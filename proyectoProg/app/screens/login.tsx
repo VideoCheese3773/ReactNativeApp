@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar"
 import React from "react";
-import React from "react";
 import {
     StyleSheet,
     Text,
@@ -14,8 +13,8 @@ import {
     AsyncStorage,
     ImageBackground,
 } from "react-native";
+import * as Crypto from 'expo-crypto';
 
-import md5 from "md5"
 
 const bgImg = require("../../assets/backgrounds/bg1.jpg")
 
