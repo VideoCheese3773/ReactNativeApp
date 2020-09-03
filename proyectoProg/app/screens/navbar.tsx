@@ -19,14 +19,16 @@ export default class NavBar extends React.Component {
         super(props)
     }
     state = {
-        isLogged: false
+        isLogged: false,
+        userId: ""
     }
 
     async componentDidMount() {
         let session = await AsyncStorage.getItem("session");
         if (session) {
             this.setState({
-                isLogged: true
+                isLogged: true,
+                userId: JSON.parse(session).data.id_usuario
             })
         }
     };
@@ -54,7 +56,7 @@ export default class NavBar extends React.Component {
             return (
                 <View style={styles.viewStyle2}>
                     <View style={styles.viewStyle}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("publicaciones")}>
+                        <TouchableOpacity onPress={() => this.props.navigation.push("publicaciones")}>
                             <Image source={homeIcon} style={styles.imageStyle} />
                         </TouchableOpacity>
                         <Text style={styles.appText}>
@@ -62,7 +64,7 @@ export default class NavBar extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.viewStyle}>
-                        <TouchableOpacity onPress={this.logout}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("publicar",{userId: this.state.userId})}>
                             <Image source={pencilIcon} style={styles.imageStyle} />
                         </TouchableOpacity>
                         <Text style={styles.appText}>
@@ -70,7 +72,7 @@ export default class NavBar extends React.Component {
                     </Text>
                     </View>
                     <View style={styles.viewStyle}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate("login")}>
+                        <TouchableOpacity onPress={() => this.props.navigation.push("perfil",{userId: this.state.userId})}>
                             <Image source={userIcon} style={styles.imageStyle} />
                         </TouchableOpacity>
                         <Text style={styles.appText}>

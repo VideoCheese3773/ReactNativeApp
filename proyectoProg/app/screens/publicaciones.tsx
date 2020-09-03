@@ -7,8 +7,8 @@ import {
     SafeAreaView,
     View,
     Image,
-    FlatList, 
-    TouchableHighlight 
+    FlatList,
+    TouchableHighlight
 } from "react-native";
 import { serviceConfig } from '../config/service-config';
 import NavBar from "./navbar";
@@ -71,24 +71,24 @@ export default class Login extends React.Component {
                         <Text style={styles.appText}>
                             Publicaciones
                         </Text>
-                        
-                    <FlatList showsVerticalScrollIndicator={false} data={this.state.arrayPublicaciones} renderItem={({ item }) => (
-                        <View style={styles.appButtonText}>
-                            <TouchableHighlight style={styles.appButtonContainer}>
-                                <Image source={{
-                                    width: 150,
-                                    height: 150,
-                                    uri: `${item.urlImagen}`
-                                }}
-                                ></Image>
 
-                            </TouchableHighlight>
-                            <Text style={styles.appText}>
-                                {item.texto}
-                            </Text>
-                        </View>
-                    )} ></FlatList>
-                    
+                        <FlatList showsVerticalScrollIndicator={false} data={this.state.arrayPublicaciones} renderItem={({ item }) => (
+                            <View style={styles.appButtonText}>
+                                <TouchableHighlight style={styles.appButtonContainer} onPress={() => { Alert.alert("Descripcion:", item.nombre) }}>
+                                    <Image source={{
+                                        width: 150,
+                                        height: 150,
+                                        uri: `${item.imagen}`
+                                    }}
+                                    ></Image>
+
+                                </TouchableHighlight>
+                                <Text style={styles.appText} onPress={() => this.props.navigation.navigate("perfil",{userId: item.usuarioId})}>
+                                    {item.texto}
+                                </Text>
+                            </View>
+                        )} ></FlatList>
+
                     </SafeAreaView>
                 </ImageBackground >
 
