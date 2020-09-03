@@ -12,7 +12,7 @@ export default class Inicio extends React.Component {
         return (
             <ImageBackground source={bgImage} style={styles.background}>
                 <SafeAreaView style={styles.safeAreaViewStyle}>
-                    <Text style = {styles.appText}>
+                    <Text style={styles.appText}>
                         BetWhere
                     </Text>
                     <TouchableOpacity style={styles.appButtonContainer} onPress={() => this.props.navigation.push('login')}>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     safeAreaViewStyle: {
-        flex:1,
+        flex: 1,
         alignItems: "center",
         justifyContent: "center"
     }

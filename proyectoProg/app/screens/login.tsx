@@ -42,6 +42,7 @@ export default class Login extends React.Component {
                 if (data.error) {
                     Alert.alert("Error", "Usuario o contraseña incorrecta");
                 } else {
+                    console.log(data)
                     this.state.username = "";
                     this.state.password = "";
                     AsyncStorage.setItem("session", JSON.stringify(data));

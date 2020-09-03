@@ -3,14 +3,15 @@ import {
     StyleSheet,
     Text,
     Alert,
-    AsyncStorage,
     ImageBackground,
     SafeAreaView,
     View,
     Image,
+    FlatList, 
+    TouchableHighlight 
 } from "react-native";
 import { serviceConfig } from '../config/service-config';
-import { TouchableOpacity, TextInput, FlatList, TouchableHighlight } from "react-native-gesture-handler";
+import NavBar from "./navbar";
 
 const bgImage = require('../../assets/backgrounds/bg3.png');
 
@@ -50,6 +51,7 @@ export default class Login extends React.Component {
 
     }
     render() {
+        const { navigation } = this.props;
         if (this.state.loading) {
             return (
                 <ImageBackground source={bgImage} style={styles.background}>
@@ -65,25 +67,28 @@ export default class Login extends React.Component {
 
                 <ImageBackground source={bgImage} style={styles.background}>
                     <SafeAreaView style={styles.safeAreaViewStyle}>
+                        <NavBar navigation={navigation}></NavBar>
                         <Text style={styles.appText}>
                             Publicaciones
                         </Text>
-                        <FlatList showsVerticalScrollIndicator={false} data={this.state.arrayPublicaciones} renderItem={({ item }) => (
-                            <View style={styles.appButtonText}>
-                                <TouchableHighlight style={styles.appButtonContainer}>
-                                    <Image source={{
-                                        width: 150,
-                                        height: 150,
-                                        uri: `${item.urlImagen}`
-                                    }}
-                                    ></Image>
+                        
+                    <FlatList showsVerticalScrollIndicator={false} data={this.state.arrayPublicaciones} renderItem={({ item }) => (
+                        <View style={styles.appButtonText}>
+                            <TouchableHighlight style={styles.appButtonContainer}>
+                                <Image source={{
+                                    width: 150,
+                                    height: 150,
+                                    uri: `${item.urlImagen}`
+                                }}
+                                ></Image>
 
-                                </TouchableHighlight>
-                                <Text style={styles.appText}>
-                                    {item.texto}
-                                </Text>
-                            </View>
-                        )} />
+                            </TouchableHighlight>
+                            <Text style={styles.appText}>
+                                {item.texto}
+                            </Text>
+                        </View>
+                    )} ></FlatList>
+                    
                     </SafeAreaView>
                 </ImageBackground >
 
@@ -116,7 +121,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#00665c",
         alignItems: "center",
         justifyContent: "center",
-        marginHorizontal:15
+        marginHorizontal: 15
     },
     appText: {
         fontSize: 15,
