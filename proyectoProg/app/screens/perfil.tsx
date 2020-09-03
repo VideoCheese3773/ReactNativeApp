@@ -121,12 +121,12 @@ export default class perfil extends React.Component {
                             </View>
 
                             <View>
-                                <Text style={styles.appText}>{this.state.nombre}</Text>
-                                <Text style={styles.appText}>{this.state.genero}</Text>
-                                <Text style={styles.appText}>{this.state.nacimiento}</Text>
-                                <Text style={styles.appText}>{this.state.correo}</Text>
-                                <Text style={styles.appText}>{this.state.ciudad}</Text>
-                                <Text style={styles.appText}>{this.state.celular}</Text>
+                                <Text style={styles.appText2}>{this.state.nombre}</Text>
+                                <Text style={styles.appText2}>{this.state.genero}</Text>
+                                <Text style={styles.appText2}>{this.state.nacimiento}</Text>
+                                <Text style={styles.appText2}>{this.state.correo}</Text>
+                                <Text style={styles.appText2}>{this.state.ciudad}</Text>
+                                <Text style={styles.appText2}>{this.state.celular}</Text>
                             </View>
 
                             <FlatList showsVerticalScrollIndicator={false} data={this.state.arrayPublicaciones} renderItem={({ item }) => (
@@ -188,6 +188,15 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         fontFamily: "Roboto",
         marginBottom: 15
+    },
+    appText2: {
+        fontSize: 15,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        fontFamily: "Roboto",
+        marginBottom: 15,
+        backgroundColor: "#000"
     },
     safeAreaViewStyle: {
         flex: 1,
