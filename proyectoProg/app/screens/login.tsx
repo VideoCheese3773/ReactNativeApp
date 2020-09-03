@@ -1,15 +1,8 @@
-import { StatusBar } from "expo-status-bar"
 import React from "react";
 import {
     StyleSheet,
     Text,
-    View,
     Alert,
-    Button,
-    FlatList,
-    Image,
-    TouchableWithoutFeedback,
-    Dimensions,
     AsyncStorage,
     ImageBackground,
     SafeAreaView,
@@ -18,20 +11,17 @@ import * as Crypto from 'expo-crypto';
 import { serviceConfig } from '../config/service-config';
 import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
 
-
 const bgImage = require('../../assets/backgrounds/bg3.png');
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
     }
-
     state = {
         username: "",
         password: "",
         url: `${serviceConfig.LOCALHOST}login-usuario`
     }
-
     async onLogin() {
         const user = this.state.username;
         const pass = await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.MD5, this.state.password);
@@ -54,16 +44,14 @@ export default class Login extends React.Component {
                 } else {
                     this.state.username = "";
                     this.state.password = "";
-                    AsyncStorage.setItem("session",JSON.stringify(data));
-                    this.props.navigation.push("publicaciones");
+                    AsyncStorage.setItem("session", JSON.stringify(data));
+                    this.props.navigation.navigate("publicaciones");
                 }
             })
             .catch((err) => {
                 Alert.alert("App Message", "Invalid data.");
             });
-
     }
-
     render() {
         const { navigation } = this.props;
         return (
@@ -76,14 +64,14 @@ export default class Login extends React.Component {
                         value={this.state.username}
                         keyboardType="default"
                         onChangeText={(username) => this.setState({ username })}
-                        placeholder="Username"
+                        placeholder="Nombre usuario"
                         placeholderTextColor="grey"
                         style={styles.textInput} />
                     <TextInput
                         value={this.state.password}
                         secureTextEntry={true}
                         onChangeText={(password) => this.setState({ password })}
-                        placeholder="Password"
+                        placeholder="Clave"
                         placeholderTextColor="grey"
                         style={styles.textInput} />
                     <TouchableOpacity style={styles.appButtonContainer} onPress={this.onLogin.bind(this)}>
@@ -91,12 +79,8 @@ export default class Login extends React.Component {
                     </TouchableOpacity>
                 </SafeAreaView>
             </ImageBackground >
-
         )
-
-
     }
-
 }
 const styles = StyleSheet.create({
     background: {

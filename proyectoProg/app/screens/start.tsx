@@ -18,7 +18,7 @@ export default class Inicio extends React.Component {
                     <TouchableOpacity style={styles.appButtonContainer} onPress={() => this.props.navigation.push('login')}>
                         <Text style={styles.appButtonText}> LogIn </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.appButtonContainer} onPress={() => this.props.navigation.push('login')}>
+                    <TouchableOpacity style={styles.appButtonContainer} onPress={() => this.props.navigation.push('register')}>
                         <Text style={styles.appButtonText}> Register </Text>
                     </TouchableOpacity>
                 </SafeAreaView>
