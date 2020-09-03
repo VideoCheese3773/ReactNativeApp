@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import startScreen from './app/screens/start';
-import loginScreen from './app/screens/login';
+import LoginScreen from './app/screens/login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -13,7 +13,7 @@ export default function App() {
     <NavigationContainer>
       <stack.Navigator initialRouteName = 'Inicio'>
         <stack.Screen name = 'Inicio' component = {startScreen}/>
-        <stack.Screen name = 'Login' component = {loginScreen}/>
+        <stack.Screen name = 'login' component = {LoginScreen}/>
       </stack.Navigator>      
     </NavigationContainer>
   );
